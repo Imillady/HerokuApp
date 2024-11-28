@@ -19,7 +19,6 @@ public class CheckboxesTest {
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("https://the-internet.herokuapp.com/checkboxes");
-
     }
     @Test
     public void checkCheckboxes() {

@@ -24,7 +24,6 @@ public class AddRemoveElementsTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("https://the-internet.herokuapp.com/add_remove_elements/");
     }
-
     @Test
     public void checkAddRemoveElements () {
         // Добавление двух элементов
@@ -39,7 +38,6 @@ public class AddRemoveElementsTest {
         List<WebElement> button1 = driver.findElements(By.className("added-manually"));
         Assert.assertEquals(1, button1.size());
     }
-
     @AfterMethod (alwaysRun = true)
     public void tearDown () {
         driver.quit();

@@ -13,7 +13,6 @@ import java.time.Duration;
 
 public class InputsTest {
     WebDriver driver;
-
     @BeforeMethod
     public void setup() {
         ChromeOptions options = new ChromeOptions();
@@ -25,7 +24,6 @@ public class InputsTest {
     @Test
     public void checkInputs() {
         WebElement field = driver.findElement(By.cssSelector("input[type='number']"));
-
         //Проверка что текст не вводиться в поле
         field.sendKeys("Astaf");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
