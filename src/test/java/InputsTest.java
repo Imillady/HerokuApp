@@ -8,11 +8,13 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.time.Duration;
 
 public class InputsTest {
     WebDriver driver;
+
     @BeforeMethod
     public void setup() {
         ChromeOptions options = new ChromeOptions();
@@ -21,37 +23,41 @@ public class InputsTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("https://the-internet.herokuapp.com/inputs");
     }
+
     @Test
     public void checkInputs() {
+        SoftAssert softAssert = new SoftAssert();
         WebElement field = driver.findElement(By.cssSelector("input[type='number']"));
         //Проверка что текст не вводиться в поле
         field.sendKeys("Astaf");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         String TextField = field.getText();
-        Assert.assertEquals(TextField,"");
+        softAssert.assertEquals(TextField, "");
 
         //Проверка что цифры вводиться в поле
         field.sendKeys("123");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         String NumberField = field.getAttribute("value");
-        Assert.assertEquals(NumberField,"123");
+        softAssert.assertEquals(NumberField, "123");
         field.clear();
+        softAssert.assertAll();
 
-        //Проверка кнопки ARROW_UP
+        //Проверка кнопки ARROW_UP - софт не нужен
         field.sendKeys(Keys.ARROW_UP);
         field.sendKeys(Keys.ARROW_UP);
         String ARROW_UP_Field = field.getAttribute("value");
-        Assert.assertEquals(ARROW_UP_Field,"2");
+        Assert.assertEquals(ARROW_UP_Field, "2");
         field.clear();
 
-        //Проверка кнопки ARROW_DOWN
+        //Проверка кнопки ARROW_DOWN - софт не нужен
         field.sendKeys(Keys.ARROW_DOWN);
         field.sendKeys(Keys.ARROW_DOWN);
         String ARROW_DOWN_Field = field.getAttribute("value");
-        Assert.assertEquals(ARROW_DOWN_Field,"-2");
+        Assert.assertEquals(ARROW_DOWN_Field, "-2");
     }
+
     @AfterMethod(alwaysRun = true)
-    public void tearDown () {
-       driver.quit();
+    public void tearDown() {
+        driver.quit();
     }
 }
