@@ -25,7 +25,7 @@ public class CheckboxesTest {
     @Test
     public void checkCheckboxes() {
         SoftAssert softAssert = new SoftAssert();
-        //Чек-бокс первый
+        // Чек-бокс первый
         WebElement checkBoxElement1 = driver.findElement(By.xpath("//*[@id=\"checkboxes\"]/input[1]"));
         boolean isSelectedBeforeClick1 = checkBoxElement1.isSelected();
         softAssert.assertFalse(isSelectedBeforeClick1);
@@ -33,7 +33,7 @@ public class CheckboxesTest {
         boolean isSelectedAfterClick1 = checkBoxElement1.isSelected();
         softAssert.assertTrue(isSelectedAfterClick1);
 
-        //Чек-бокс второй
+        // Чек-бокс второй
         WebElement checkBoxElement2 = driver.findElement(By.xpath("//*[@id=\"checkboxes\"]/input[2]"));
         boolean isSelectedBeforeClick2 = checkBoxElement2.isSelected();
         softAssert.assertTrue(isSelectedBeforeClick2);

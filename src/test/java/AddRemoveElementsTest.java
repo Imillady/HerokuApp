@@ -26,14 +26,14 @@ public class AddRemoveElementsTest {
     @Test
     public void checkAddRemoveElements() {
         SoftAssert softAssert = new SoftAssert();
-        // Добавление двух элементов
+        //Добавление двух элементов
         for (int i = 0; i < 2; i++) {
             driver.findElement(By.xpath("//*[@id=\"content\"]/div/button")).click();
         }
         List<WebElement> buttons2 = driver.findElements(By.className("added-manually"));
         softAssert.assertEquals(2, buttons2.size());
 
-        // Удаление одного элемента
+        //Удаление одного элемента
         driver.findElement(By.xpath("//*[@id=\"elements\"]/button")).click();
         List<WebElement> button1 = driver.findElements(By.className("added-manually"));
         softAssert.assertEquals(1, button1.size());

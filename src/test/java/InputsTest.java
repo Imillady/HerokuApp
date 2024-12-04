@@ -42,14 +42,14 @@ public class InputsTest {
         field.clear();
         softAssert.assertAll();
 
-        //Проверка кнопки ARROW_UP - софт не нужен
+        //Проверка кнопки ARROW_UP
         field.sendKeys(Keys.ARROW_UP);
         field.sendKeys(Keys.ARROW_UP);
         String ARROW_UP_Field = field.getAttribute("value");
         Assert.assertEquals(ARROW_UP_Field, "2");
         field.clear();
 
-        //Проверка кнопки ARROW_DOWN - софт не нужен
+        //Проверка кнопки ARROW_DOWN
         field.sendKeys(Keys.ARROW_DOWN);
         field.sendKeys(Keys.ARROW_DOWN);
         String ARROW_DOWN_Field = field.getAttribute("value");
